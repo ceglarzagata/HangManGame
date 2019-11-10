@@ -5,28 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agata Ceglarz - HangMan Game Project</title>
 
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Shadows+Into+Light+Two&display=swap&subset=latin-ext" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+
   <head>
     <h1>Wisielec</h1>
-    <button>Jak grać?</button>
+    <button class="how-to-play-btn">Jak grać?</button>
   </head>
   
   <main>
-    <div id="start-game-box"></div>
-    <button id="wordGenerateBtn" title="Wylosuj słowo">Wylosuj słowo</button>
+    <div id="start-game-box" class="disabled-overlay">
+      <div class="info-box">
+        <h1>Wisielec</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda
+        </p>
+        <button class="how-to-play-btn">Jak grać?</button>
+        <button class="start-game-btn">Zacznij grę!</button>
+      </div>
+    </div>
+
+    <div id="how-to-play-box" class="disabled-overlay">
+      <div class="info-box">
+        <h2>Jak grać?</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda
+          </p>
+          <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda
+          </p>
+          <button class="start-game-btn">Zacznij grę!</button>
+      </div>
+    </div>
+
+    <button id="word-generate-btn" title="Wylosuj słowo">Wylosuj słowo</button>
     <ul id="letters"></ul>
     <ul id="alphabet"></ul>
-    <div id="won-box">Wygrałeś/aś!</div>
-    <div id="lose-box">Przegrałeś/aś!</div>
+    <div id="result-box" class="disabled-overlay">
+      <div class="info-box">
+        <p></p>
+        <button id="play-again-btn">Zagraj jeszcze raz!</button>
+      </div>
+    </div>
     <div id="hang-man"></div>
+
+    <div id="score-box">
+      <div id="won-box">Wygrałeś <span>0 razy</span>.</div>
+      <div id="fail-box">Przegrałeś <span>0 razy</span>.</div>
+    </div>
+
   </main>
 
   <footer>
     <p>Created by Agata Ceglarz</p>
   </footer>
+
   <script src="./js/index.js"></script>
+
 </body>
 </html>

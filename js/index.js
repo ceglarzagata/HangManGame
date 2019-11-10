@@ -12,16 +12,6 @@ const alphabetArray = [
     'w', 'y', 'z', 'ź', 'ż'
 ];
 
-const wordGenerateBtn = document.getElementById('wordGenerateBtn');
-const letters = document.getElementById('letters');
-const alphabet = document.getElementById('alphabet');
-const wonBox = document.getElementById('won-box');
-const loseBox = document.getElementById('lose-box');
-const hangMan = document.getElementById('hang-man');
-
-let randomWord = '';
-let wordToGuess = [];
-let counter = 0;
 let visual = {
     element1: "element1",
     element2: "element2",
@@ -36,6 +26,27 @@ let visual = {
     element11: "element11"
 }
 
+const alphabet = document.getElementById('alphabet');
+const wordGenerateBtn = document.getElementById('word-generate-btn');
+const startGameBtns = document.getElementsByClassName('start-game-btn');
+const startGameBox = document.getElementById('start-game-box');
+const howToPlayBtns = document.getElementsByClassName('how-to-play-btn');
+const howToPlayBox = document.getElementById('how-to-play-box');
+const letters = document.getElementById('letters');
+const hangMan = document.getElementById('hang-man');
+const resultBox = document.getElementById('result-box');
+const resultBoxInfo = resultBox.querySelector('p');
+const palyAgainBtn = document.getElementById('play-again-btn');
+const wonBox = document.querySelector('#won-box span');
+const failBox = document.querySelector('#fail-box span');
+
+const startWord = 'zaczynajmy';
+let randomWord = '';
+let wordToGuess = [];
+let wrongAnswersCounter = 0;
+let failsAmount = 0;
+let wonsAmount = 0;
+
 for (alphabetLetter of alphabetArray) {
     let letter = document.createElement('li');
     letter.innerText = alphabetLetter;
@@ -43,7 +54,9 @@ for (alphabetLetter of alphabetArray) {
     letter.addEventListener('click', function() {
         checkIfIsInWord(letter.innerText);
     });
-}
+};
+
+generateDashesAmount(startWord);
 
 function checkIfIsInWord(literaAlfabetu) {
     if (randomWord.includes(literaAlfabetu)) {
@@ -51,16 +64,26 @@ function checkIfIsInWord(literaAlfabetu) {
             if (randomWord[i] === literaAlfabetu){
                 wordToGuess[i] = literaAlfabetu;
                 letters.children[i].innerText = literaAlfabetu;
-                !wordToGuess.includes('_') && (wonBox.style.display="block")
+                if(!wordToGuess.includes('_')) {
+                    wonsAmount++;
+                    wonBox.innerText = `${wonsAmount} ${wonsAmount===1 ? 'raz' : 'razy'}`;
+                    resultBox.style.display="block";
+                    resultBoxInfo.innerText="Wygrałeś!";
+                }
             }    
         }
     } else {
-        counter++;
+        wrongAnswersCounter++;
         let hangManElement = document.createElement('div');
-        hangManElement.innerHTML = counter;
-        hangManElement.className = visual[`element${counter}`];
+        hangManElement.innerHTML = wrongAnswersCounter;
+        hangManElement.className = visual[`element${wrongAnswersCounter}`];
         hangMan.appendChild(hangManElement);
-        counter === 11 && (loseBox.style.display="block");
+        if (wrongAnswersCounter === 6) {
+            failsAmount++;
+            failBox.innerText = `${failsAmount} ${failsAmount===1 ? 'raz' : 'razy'}`;
+            resultBox.style.display="block";
+            resultBoxInfo.innerText="Przegrałeś!";
+        }
     }
 };
 
@@ -77,8 +100,9 @@ function generateDashesAmount(randomWord) {
 
 function genereteWord(words) {
     wordToGuess = [];
-    counter = 0;
+    wrongAnswersCounter = 0;
     letters.innerHTML = null;
+    hangMan.innerHTML = null;
     let randomWordIndex = Math.floor(Math.random() * (words.length));
     randomWord = words[randomWordIndex];
     generateDashesAmount(randomWord);
@@ -86,4 +110,24 @@ function genereteWord(words) {
 
 wordGenerateBtn.addEventListener('click', function() {
     genereteWord(wordsArray);
+});
+
+for(button of startGameBtns){
+    button.addEventListener('click', function() {
+        startGameBox.style.display='none';
+        howToPlayBox.style.display='none'; 
+        genereteWord(wordsArray);
+    });   
+};
+
+for(button of howToPlayBtns){
+    button.addEventListener('click', function() {
+        startGameBox.style.display="none";
+        howToPlayBox.style.display='block';
+    });    
+};
+
+palyAgainBtn.addEventListener('click', function() {
+    genereteWord(wordsArray);
+    resultBox.style.display="none";
 });
