@@ -9,14 +9,24 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Wisielec</h1>
+  <head>
+    <h1>Wisielec</h1>
+    <button>Jak grać?</button>
+  </head>
+  
+  <main>
+    <div id="start-game-box"></div>
+    <button id="wordGenerateBtn" title="Wylosuj słowo">Wylosuj słowo</button>
+    <ul id="letters"></ul>
+    <ul id="alphabet"></ul>
+    <div id="won-box">Wygrałeś/aś!</div>
+    <div id="lose-box">Przegrałeś/aś!</div>
+    <div id="hang-man"></div>
+  </main>
 
-  <h2 id="randomWord"></h2>
-  <button id="wordGenerateBtn" title="Wylosuj słowo">Losuj słowo</button>
-  <ul id="letters"></ul>
-  <ul id="alphabet"></ul>
-
-
-  <script src="index.js"></script>
+  <footer>
+    <p>Created by Agata Ceglarz</p>
+  </footer>
+  <script src="./js/index.js"></script>
 </body>
 </html>
