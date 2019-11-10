@@ -28,7 +28,7 @@ body {
     text-align: center;
 }
 
-#how-to-play-box {
+.how-to-play-box {
     display: none;
 }
 
@@ -38,6 +38,6 @@ li {
     font-size: 1.5rem;
 }
 
-#result-box {
+.result-box {
     display: none;
 }
