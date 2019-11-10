@@ -63,7 +63,8 @@ const howToPlayBox = document.getElementById('how-to-play-box');
 const letters = document.getElementById('letters');
 const hangMan = document.getElementById('hang-man');
 const resultBox = document.getElementById('result-box');
-const resultBoxInfo = resultBox.querySelector('p');
+const resultInfo = resultBox.querySelector('p');
+const resultIcon = resultBox.querySelector('i');
 const palyAgainBtn = document.getElementById('play-again-btn');
 const wonBox = document.querySelector('#won-box span');
 const failBox = document.querySelector('#fail-box span');
@@ -78,6 +79,7 @@ let wonsAmount = 0;
 for (alphabetLetter of alphabetArray) {
     let letter = document.createElement('li');
     letter.innerText = alphabetLetter;
+    letter.className='letter';
     alphabet.appendChild(letter);
     letter.addEventListener('click', function() {
         checkIfIsInWord(letter.innerText);
@@ -96,7 +98,8 @@ function checkIfIsInWord(literaAlfabetu) {
                     wonsAmount++;
                     wonBox.innerText = `${wonsAmount} ${wonsAmount===1 ? 'raz' : 'razy'}`;
                     resultBox.style.display="block";
-                    resultBoxInfo.innerText="Wygrałeś!";
+                    resultIcon.classList.add("mdi-trophy");
+                    resultInfo.innerText="Wygrałeś!";
                 }
             }    
         }
@@ -110,7 +113,8 @@ function checkIfIsInWord(literaAlfabetu) {
             failsAmount++;
             failBox.innerText = `${failsAmount} ${failsAmount===1 ? 'raz' : 'razy'}`;
             resultBox.style.display="block";
-            resultBoxInfo.innerText="Przegrałeś!";
+            resultIcon.classList.add("mdi-emoticon-sad-outline");
+            resultInfo.innerText="Przegrałeś!";
         }
     }
 };
@@ -122,6 +126,7 @@ function generateDashesAmount(randomWord) {
     for (letter of wordToGuess) {
         let letterToGuess = document.createElement('li');
         letterToGuess.innerText = letter;
+        letterToGuess.className='letter-to-guess';
         letters.appendChild(letterToGuess);
     }
 };

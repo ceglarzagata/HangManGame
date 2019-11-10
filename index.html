@@ -6,16 +6,17 @@
   <title>Agata Ceglarz - HangMan Game Project</title>
 
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Shadows+Into+Light+Two&display=swap&subset=latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <head>
+  <header class="header">
     <h1>Wisielec</h1>
     <button class="how-to-play-btn">Jak grać?</button>
-  </head>
+  </header>
   
   <main>
     <div id="start-game-box" class="disabled-overlay">
@@ -47,6 +48,7 @@
     <ul id="alphabet" class="alphabet"></ul>
     <div id="result-box" class="disabled-overlay result-box">
       <div class="info-box">
+        <i class="mdi"></i>
         <p></p>
         <button id="play-again-btn">Zagraj jeszcze raz!</button>
       </div>
@@ -54,8 +56,18 @@
     <div id="hang-man" class="hang-man"></div>
 
     <div id="score-box" class="score-box">
-      <div id="won-box" class="won-box">Wygrałeś <span>0 razy</span>.</div>
-      <div id="fail-box" class="fail-box">Przegrałeś <span>0 razy</span>.</div>
+      <div id="won-box" class="won-box">
+        <i class="mdi mdi-trophy"></i>
+        <p>
+          Wygrałeś <span>0 razy</span>.
+        </p>
+      </div>
+      <div id="fail-box" class="fail-box">
+          <i class="mdi mdi-close-circle"></i>
+          <p>
+            Przegrałeś <span>0 razy</span>.
+          </p>
+      </div>
     </div>
 
   </main>
