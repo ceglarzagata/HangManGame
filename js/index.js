@@ -60,7 +60,7 @@ const startGameBtns = document.getElementsByClassName('start-game-btn');
 const startGameBox = document.getElementById('start-game-box');
 const howToPlayBtns = document.getElementsByClassName('how-to-play-btn');
 const howToPlayBox = document.getElementById('how-to-play-box');
-const letters = document.getElementById('letters');
+const lettersToGuess = document.getElementById('lettersToGuess');
 const hangMan = document.getElementById('hang-man');
 const resultBox = document.getElementById('result-box');
 const resultInfo = resultBox.querySelector('p');
@@ -93,7 +93,7 @@ function checkIfIsInWord(literaAlfabetu) {
         for (let i = 0; i <= randomWord.length; i++){
             if (randomWord[i] === literaAlfabetu){
                 wordToGuess[i] = literaAlfabetu;
-                letters.children[i].innerText = literaAlfabetu;
+                lettersToGuess.children[i].innerText = literaAlfabetu;
                 if(!wordToGuess.includes('_')) {
                     wonsAmount++;
                     wonBox.innerText = `${wonsAmount} ${wonsAmount===1 ? 'raz' : 'razy'}`;
@@ -127,14 +127,14 @@ function generateDashesAmount(randomWord) {
         let letterToGuess = document.createElement('li');
         letterToGuess.innerText = letter;
         letterToGuess.className='letter-to-guess';
-        letters.appendChild(letterToGuess);
+        lettersToGuess.appendChild(letterToGuess);
     }
 };
 
 function genereteWord(words) {
     wordToGuess = [];
     wrongAnswersCounter = 0;
-    letters.innerHTML = null;
+    lettersToGuess.innerHTML = null;
     hangMan.innerHTML = null;
     let randomWordIndex = Math.floor(Math.random() * (words.length));
     randomWord = words[randomWordIndex];

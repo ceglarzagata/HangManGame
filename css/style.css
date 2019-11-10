@@ -1,7 +1,7 @@
 
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -72,10 +72,17 @@ body {
     display: none;
 }
 
-.letter {
-    display: inline-block;
-    padding: 0 5px;
-    font-size: 1.5rem;
+.hang-man-visual {
+    height: 50px;
+    overflow: hidden;
+}
+
+.word-generate-btn {
+    margin: 10px 0;
+}
+
+.letters-to-guess {
+    padding: 10px 0;
 }
 
 .letter-to-guess {
@@ -84,8 +91,46 @@ body {
     font-size: 1.5rem;
 }
 
+.alphabet {
+    margin: 10px 0;
+}
+
+.letter {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 40px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: sandybrown;
+    font-size: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
 .result-box {
     display: none;
+}
+
+.score-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.won-box, .fail-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.won-box {
+    margin-right: 5px;
+}
+
+.score-icon {
+    margin-left: 5px;
 }
 
 .footer-wrapper {

@@ -46,9 +46,18 @@
       </div>
     </div>
 
-    <button id="word-generate-btn" class="button word-generate-btn" title="Wylosuj słowo">Wylosuj słowo</button>
-    <ul id="letters" class="letters"></ul>
+    <div id="hang-man" class="hang-man-visual"></div>
+
+    <button
+      id="word-generate-btn"
+      class="button word-generate-btn"
+      title="Wylosuj nowe słowo"
+    >
+      Wylosuj nowe słowo
+    </button>
+    <ul id="lettersToGuess" class="letters-to-guess"></ul>
     <ul id="alphabet" class="alphabet"></ul>
+
     <div id="result-box" class="disabled-overlay result-box">
       <div class="info-box">
         <i class="mdi"></i>
@@ -56,17 +65,16 @@
         <button id="play-again-btn" class="button play-again-btn">Zagraj jeszcze raz!</button>
       </div>
     </div>
-    <div id="hang-man" class="hang-man"></div>
 
     <div id="score-box" class="score-box">
       <div id="won-box" class="won-box">
-        <i class="mdi mdi-trophy"></i>
+        <i class="mdi mdi-trophy score-icon"></i>
         <p>
           Wygrałeś <span>0 razy</span>.
         </p>
       </div>
       <div id="fail-box" class="fail-box">
-          <i class="mdi mdi-close-circle"></i>
+          <i class="mdi mdi-close-circle score-icon"></i>
           <p>
             Przegrałeś <span>0 razy</span>.
           </p>
