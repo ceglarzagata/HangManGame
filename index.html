@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agata Ceglarz - HangMan Game Project</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Shadows+Into+Light+Two&display=swap&subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&display=swap&subset=latin-ext" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.5.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
@@ -13,20 +13,23 @@
 
 <body>
 
-  <header class="header">
-    <h1>Wisielec</h1>
-    <button class="how-to-play-btn">Jak grać?</button>
+  <header class="header-wrapper">
+    <div class="container header">
+      <h1 class="header-title">HangMan Game</h1>
+      <button class="button how-to-play-btn">Jak grać?</button>
+    </div>
   </header>
   
-  <main>
+  <main class="container main">
+
     <div id="start-game-box" class="disabled-overlay">
       <div class="info-box">
-        <h1>Wisielec</h1>
+        <h1>HangMan Game</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda
         </p>
-        <button class="how-to-play-btn">Jak grać?</button>
-        <button class="start-game-btn">Zacznij grę!</button>
+        <button class="button how-to-play-btn">Jak grać?</button>
+        <button class="button start-game-btn">Zacznij grę!</button>
       </div>
     </div>
 
@@ -39,18 +42,18 @@
           <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda
           </p>
-          <button class="start-game-btn">Zacznij grę!</button>
+          <button class="button start-game-btn">Zacznij grę!</button>
       </div>
     </div>
 
-    <button id="word-generate-btn" class="word-generate-btn" title="Wylosuj słowo">Wylosuj słowo</button>
+    <button id="word-generate-btn" class="button word-generate-btn" title="Wylosuj słowo">Wylosuj słowo</button>
     <ul id="letters" class="letters"></ul>
     <ul id="alphabet" class="alphabet"></ul>
     <div id="result-box" class="disabled-overlay result-box">
       <div class="info-box">
         <i class="mdi"></i>
         <p></p>
-        <button id="play-again-btn">Zagraj jeszcze raz!</button>
+        <button id="play-again-btn" class="button play-again-btn">Zagraj jeszcze raz!</button>
       </div>
     </div>
     <div id="hang-man" class="hang-man"></div>
@@ -72,8 +75,10 @@
 
   </main>
 
-  <footer>
-    <p>Created by Agata Ceglarz</p>
+  <footer class="footer-wrapper">
+    <div class="container sign">
+      Created by Agata Ceglarz
+    </div>
   </footer>
 
   <script src="./js/index.js"></script>
