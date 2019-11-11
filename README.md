@@ -9,3 +9,6 @@ Technology used:
 <li>JavaScript</li>
 
 See: https://ceglarzagata.github.io/hangManGame/
+
+
+No support for IE.

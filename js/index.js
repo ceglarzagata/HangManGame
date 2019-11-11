@@ -75,6 +75,7 @@ let wordToGuess = [];
 let wrongAnswersCounter = 0;
 let failsAmount = 0;
 let wonsAmount = 0;
+let errorLimit = 11;
 
 for (alphabetLetter of alphabetArray) {
     let letter = document.createElement('li');
@@ -96,7 +97,7 @@ function checkIfIsInWord(literaAlfabetu) {
                 lettersToGuess.children[i].innerText = literaAlfabetu;
                 if(!wordToGuess.includes('_')) {
                     wonsAmount++;
-                    wonBox.innerText = `${wonsAmount} ${wonsAmount===1 ? 'raz' : 'razy'}`;
+                    wonBox.innerHTML = `<strong>${wonsAmount}</strong> ${wonsAmount===1 ? 'raz' : 'razy'}`;
                     resultBox.style.display="block";
                     resultIcon.classList.add("mdi-trophy");
                     resultInfo.innerText="Wygrałeś!";
@@ -105,13 +106,13 @@ function checkIfIsInWord(literaAlfabetu) {
         }
     } else {
         wrongAnswersCounter++;
-        let hangManElement = document.createElement('div');
-        hangManElement.innerHTML = wrongAnswersCounter;
+        let hangManElement = document.createElement('img');
+        hangManElement.src = `../images/${visual[`element${wrongAnswersCounter}`]}.png`;
         hangManElement.className = visual[`element${wrongAnswersCounter}`];
         hangMan.appendChild(hangManElement);
-        if (wrongAnswersCounter === 6) {
+        if (wrongAnswersCounter === errorLimit) {
             failsAmount++;
-            failBox.innerText = `${failsAmount} ${failsAmount===1 ? 'raz' : 'razy'}`;
+            failBox.innerHTML = `<strong>${failsAmount}</strong> ${failsAmount===1 ? 'raz' : 'razy'}`;
             resultBox.style.display="block";
             resultIcon.classList.add("mdi-emoticon-sad-outline");
             resultInfo.innerText="Przegrałeś!";

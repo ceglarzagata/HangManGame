@@ -16,7 +16,7 @@
   <header class="header-wrapper">
     <div class="container header">
       <h1 class="header-title">HangMan Game</h1>
-      <button class="button how-to-play-btn">Jak grać?</button>
+      <button class="btn how-to-play-btn">Jak grać?</button>
     </div>
   </header>
   
@@ -24,45 +24,58 @@
 
     <div id="start-game-box" class="disabled-overlay">
       <div class="info-box">
-        <h1>HangMan Game</h1>
-        <p>
+        <h2 class="info-box-title">HangMan Game</h2>
+        <p class="info-box-text">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda
         </p>
-        <button class="button how-to-play-btn">Jak grać?</button>
-        <button class="button start-game-btn">Zacznij grę!</button>
+        <button class="btn secondary-btn how-to-play-btn">Jak grać?</button>
+        <button class="btn secondary-btn start-game-btn">Zacznij grę!</button>
       </div>
     </div>
 
     <div id="how-to-play-box" class="disabled-overlay how-to-play-box">
       <div class="info-box">
-        <h2>Jak grać?</h2>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda
-          </p>
-          <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias assumenda
-          </p>
-          <button class="button start-game-btn">Zacznij grę!</button>
+        <h2 class="info-box-title">Jak grać?</h2>
+        <p class="info-box-text">
+          Zgadnij wylosowane słowo wybierając konkretne litery.
+          <br/><br/>
+          Możesz pomylić się konkretną ilość razy w zależności od poziomu trudności.
+        </p>
+        <button class="btn secondary-btn start-game-btn">Zacznij grę!</button>
       </div>
     </div>
 
-    <div id="hang-man" class="hang-man-visual"></div>
+    <div id="hang-man" class="hang-man-visual">
+      <img src="/images/element1.png"/>
+    </div>
 
     <button
       id="word-generate-btn"
-      class="button word-generate-btn"
+      class="btn word-generate-btn"
       title="Wylosuj nowe słowo"
     >
       Wylosuj nowe słowo
     </button>
+    <!-- <button
+      id="error-limit-btn"
+      class="btn"
+      title="Zmień limit błędów"
+    >
+      Zmień limit błędów
+    </button> -->
     <ul id="lettersToGuess" class="letters-to-guess"></ul>
     <ul id="alphabet" class="alphabet"></ul>
 
     <div id="result-box" class="disabled-overlay result-box">
       <div class="info-box">
-        <i class="mdi"></i>
-        <p></p>
-        <button id="play-again-btn" class="button play-again-btn">Zagraj jeszcze raz!</button>
+        <i class="mdi result-icon"></i>
+        <p class="info-box-text"></p>
+        <button
+          id="play-again-btn"
+          class="btn secondary-btn play-again-btn"
+        >
+          Zagraj jeszcze raz!
+        </button>
       </div>
     </div>
 
@@ -70,13 +83,13 @@
       <div id="won-box" class="won-box">
         <i class="mdi mdi-trophy score-icon"></i>
         <p>
-          Wygrałeś <span>0 razy</span>.
+          Wygrałeś <span><strong>0</strong> razy</span>.
         </p>
       </div>
       <div id="fail-box" class="fail-box">
           <i class="mdi mdi-close-circle score-icon"></i>
           <p>
-            Przegrałeś <span>0 razy</span>.
+            Przegrałeś <span><strong>0</strong> razy</span>.
           </p>
       </div>
     </div>
