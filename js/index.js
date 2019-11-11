@@ -52,8 +52,6 @@ const levels = {
     }
 }
 
-const {words, image, errorLimit} = levels.easy;
-
 const alphabetArray = [
     'a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f',
     'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n',
@@ -68,6 +66,7 @@ const startGameBox = document.getElementById('start-game-box');
 const howToPlayBtns = document.getElementsByClassName('how-to-play-btn');
 const howToPlayBox = document.getElementById('how-to-play-box');
 const lettersToGuess = document.getElementById('lettersToGuess');
+const levelBox = document.getElementById('level-box');
 const hangManImg = document.querySelector('#hang-man img');
 const resultBox = document.getElementById('result-box');
 const resultInfo = resultBox.querySelector('p');
@@ -82,17 +81,38 @@ let wordToGuess = [];
 let wrongAnswersCounter = 0;
 let failsAmount = 0;
 let wonsAmount = 0;
+let levelName = 'easy';
+const {words, image, errorLimit} = levels[levelName];
 
 for (alphabetLetter of alphabetArray) {
     let letter = document.createElement('li');
     letter.innerText = alphabetLetter;
-    letter.className='letter';
+    letter.className = 'letter';
     alphabet.appendChild(letter);
     letter.addEventListener('click', function() {
         checkIfIsInWord(letter.innerText);
     });
 };
 
+function addLevelsBtn(levels) {
+    for(level in levels){
+        let levelBtn = document.createElement('button');
+        levelBtn.id = level;
+        levelBtn.className = "btn level-btn";
+        levelBtn.setAttribute('title', 'Zmień poziom trudności');
+        levelBtn.innerText = level;
+        levelBox.appendChild(levelBtn);
+        levelBtn.addEventListener('click', function() {
+            const levelButtons = document.querySelectorAll('.level-btn');
+            levelButtons.forEach((btn)=> btn.classList.remove('secondary-btn'));
+            levelName = this.id;
+            this.classList.add('secondary-btn');
+            genereteWord(levels[levelName].words);
+        });
+    }
+};
+
+addLevelsBtn(levels);
 generateDashesAmount(startWord);
 
 function checkIfIsInWord(literaAlfabetu) {
