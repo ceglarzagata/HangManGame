@@ -1,37 +1,58 @@
-const wordsArray = [
-    'bułka',
-    'kubek',
-    'anatomia',
-    'grzyby',
-    'biurko',
-    'pióro',
-    'kura',
-    'dzban',
-    'koń',
-    'lisica',
-    'pawlacz',
-    'tapczan',
-    'gapa',
-    'licznik',
-    'słownik',
-    'przyjaciel',
-    'tusz',
-    'sztywniak',
-    'spawacz',
-    'lufa',
-    'luneta',
-    'komoda',
-    'jezioro',
-    'wędkarstwo',
-    'motoryzacja',
-    'sznycel',
-    'kot',
-    'dogoterapia',
-    'rzeczpospolita',
-    'ubezwłasnowolnienie',
-    'rozżalony',
-    'transgraniczny'
-];
+const levels = {
+    easy: { 
+        words: [
+            'bułka',
+            'kubek',
+            'grzyby',
+            'biurko',
+            'pióro',
+            'kura',
+            'dzban',
+            'koń',
+            'gapa',
+            'kot',
+
+        ],
+        image: 'hangman',
+        errorLimit: 11
+    },
+    medium: { 
+        words: [
+            'lisica',
+            'pawlacz',
+            'tapczan',
+            'licznik',
+            'słownik',
+            'przyjaciel',
+            'tusz',
+            'sztywniak',
+            'spawacz',
+            'lufa',
+            'luneta',
+            'komoda',
+            'jezioro',
+            'motoryzacja',
+            'sznycel',
+        ],
+        image: 'sandwitch',
+        errorLimit: 6
+    },
+    hard: { 
+        words: [
+            'wędkarstwo',
+            'anatomia',
+            'dogoterapia',
+            'rzeczpospolita',
+            'ubezwłasnowolnienie',
+            'rozżalony',
+            'transgraniczny'
+        ],
+        image: 'drink',
+        errorLimit: 4
+    }
+}
+
+const {words, image, errorLimit} = levels.easy;
 
 const alphabetArray = [
     'a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f',
@@ -39,20 +60,6 @@ const alphabetArray = [
     'ń', 'o', 'ó', 'p', 'r', 's', 'ś', 't', 'u',
     'w', 'y', 'z', 'ź', 'ż'
 ];
-
-let visual = {
-    element1: "element1",
-    element2: "element2",
-    element3: "element3",
-    element4: "element4",
-    element5: "element5",
-    element6: "element6",
-    element7: "element7",
-    element8: "element8",
-    element9: "element9",
-    element10: "element10",
-    element11: "element11"
-}
 
 const alphabet = document.getElementById('alphabet');
 const wordGenerateBtn = document.getElementById('word-generate-btn');
@@ -75,7 +82,6 @@ let wordToGuess = [];
 let wrongAnswersCounter = 0;
 let failsAmount = 0;
 let wonsAmount = 0;
-let errorLimit = 11;
 
 for (alphabetLetter of alphabetArray) {
     let letter = document.createElement('li');
@@ -106,7 +112,7 @@ function checkIfIsInWord(literaAlfabetu) {
         }
     } else {
         wrongAnswersCounter++;
-        hangManImg.src = `./images/${visual[`element${wrongAnswersCounter}`]}.png`;
+        hangManImg.src = `./images/${image}${wrongAnswersCounter}.png`;
         if (wrongAnswersCounter === errorLimit) {
             failsAmount++;
             failBox.innerHTML = `<strong>${failsAmount}</strong> ${failsAmount===1 ? 'raz' : 'razy'}`;
@@ -140,14 +146,14 @@ function genereteWord(words) {
 };
 
 wordGenerateBtn.addEventListener('click', function() {
-    genereteWord(wordsArray);
+    genereteWord(words);
 });
 
 for(button of startGameBtns){
     button.addEventListener('click', function() {
         startGameBox.style.display='none';
         howToPlayBox.style.display='none'; 
-        genereteWord(wordsArray);
+        genereteWord(words);
     });   
 };
 
@@ -159,6 +165,6 @@ for(button of howToPlayBtns){
 };
 
 palyAgainBtn.addEventListener('click', function() {
-    genereteWord(wordsArray);
+    genereteWord(words);
     resultBox.style.display="none";
 });
