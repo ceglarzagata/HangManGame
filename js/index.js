@@ -61,7 +61,7 @@ const startGameBox = document.getElementById('start-game-box');
 const howToPlayBtns = document.getElementsByClassName('how-to-play-btn');
 const howToPlayBox = document.getElementById('how-to-play-box');
 const lettersToGuess = document.getElementById('lettersToGuess');
-const hangMan = document.getElementById('hang-man');
+const hangManImg = document.querySelector('#hang-man img');
 const resultBox = document.getElementById('result-box');
 const resultInfo = resultBox.querySelector('p');
 const resultIcon = resultBox.querySelector('i');
@@ -106,10 +106,7 @@ function checkIfIsInWord(literaAlfabetu) {
         }
     } else {
         wrongAnswersCounter++;
-        let hangManElement = document.createElement('img');
-        hangManElement.src = `../images/${visual[`element${wrongAnswersCounter}`]}.png`;
-        hangManElement.className = visual[`element${wrongAnswersCounter}`];
-        hangMan.appendChild(hangManElement);
+        hangManImg.src = `./images/${visual[`element${wrongAnswersCounter}`]}.png`;
         if (wrongAnswersCounter === errorLimit) {
             failsAmount++;
             failBox.innerHTML = `<strong>${failsAmount}</strong> ${failsAmount===1 ? 'raz' : 'razy'}`;
@@ -136,7 +133,7 @@ function genereteWord(words) {
     wordToGuess = [];
     wrongAnswersCounter = 0;
     lettersToGuess.innerHTML = null;
-    hangMan.innerHTML = null;
+    hangManImg.src = "";
     let randomWordIndex = Math.floor(Math.random() * (words.length));
     randomWord = words[randomWordIndex];
     generateDashesAmount(randomWord);

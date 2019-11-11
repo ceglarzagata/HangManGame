@@ -105,8 +105,11 @@ body {
 
 
 .hang-man-visual {
-    height: 50px;
-    overflow: hidden;
+    height: 125px;
+}
+
+.hang-man-element {
+    max-height: 100%;
 }
 
 .word-generate-btn {
