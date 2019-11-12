@@ -85,12 +85,14 @@ let levelName = 'easy';
 
 
 for (alphabetLetter of alphabetArray) {
-    let letter = document.createElement('li');
+    let letter = document.createElement('button');
     letter.innerText = alphabetLetter;
-    letter.className = 'letter';
+    letter.setAttribute("data-key", alphabetLetter);
+    letter.className = 'btn secondary-btn letter';
     alphabet.appendChild(letter);
     letter.addEventListener('click', function() {
-        checkIfIsInWord(letter.innerText);
+        checkIfIsInWord(letter.getAttribute("data-key"));
+        letter.disabled = true;
     });
 };
 
@@ -109,7 +111,8 @@ function addLevelsBtn(levels) {
             levelName = this.id;
             this.classList.add('secondary-btn');
             hangManImg.src = `./images/${levels[levelName].image}0.png`;
-            genereteWord(levels[levelName].words);
+            const {words, image} = levels[levelName];
+            genereteWord(words, image);
         });
     }
 };
@@ -120,7 +123,6 @@ generateDashesAmount(startWord);
 
 function checkIfIsInWord(literaAlfabetu) {
     const {image, errorLimit} = levels[levelName];
-
     if (randomWord.includes(literaAlfabetu)) {
         for (let i = 0; i <= randomWord.length; i++){
             if (randomWord[i] === literaAlfabetu){
@@ -162,26 +164,29 @@ function generateDashesAmount(randomWord) {
     }
 };
 
-function genereteWord(words) {
+function genereteWord(words, image) {
     wordToGuess = [];
     wrongAnswersCounter = 0;
+    const alphabetLetters = document.querySelectorAll(".letter");
     lettersToGuess.innerHTML = null;
     let randomWordIndex = Math.floor(Math.random() * (words.length));
     randomWord = words[randomWordIndex];
+    hangManImg.src = `./images/${image}0.png`;
     generateDashesAmount(randomWord);
+    alphabetLetters.forEach(letter => letter.disabled = false);
 };
 
 wordGenerateBtn.addEventListener('click', function() {
     const {words, image} = levels[levelName];
-    genereteWord(words);
+    genereteWord(words, image);
 });
 
 for(button of startGameBtns){
-    const {words} = levels[levelName];
+    const {words, image} = levels[levelName];
     button.addEventListener('click', function() {
         startGameBox.style.display='none';
         howToPlayBox.style.display='none'; 
-        genereteWord(words);
+        genereteWord(words, image);
     });   
 };
 
@@ -194,7 +199,6 @@ for(button of howToPlayBtns){
 
 palyAgainBtn.addEventListener('click', function() {
     const {words, image} = levels[levelName];
-    hangManImg.src = `./images/${image}0.png`;
-    genereteWord(words);
+    genereteWord(words, image);
     resultBox.style.display="none";
 });
