@@ -119,6 +119,7 @@ body {
 
 .hang-man-visual {
     height: 125px;
+    margin: var(--vertical-gap) 0;
 }
 
 .hang-man-element {

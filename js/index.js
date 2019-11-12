@@ -34,7 +34,7 @@ const levels = {
             'motoryzacja',
             'sznycel',
         ],
-        image: 'sandwitch',
+        image: 'hamburger',
         errorLimit: 6
     },
     hard: { 
@@ -99,6 +99,7 @@ function addLevelsBtn(levels) {
         let levelBtn = document.createElement('button');
         levelBtn.id = level;
         levelBtn.className = "btn level-btn";
+        level === levelName && levelBtn.classList.add('secondary-btn');
         levelBtn.setAttribute('title', 'Zmień poziom trudności');
         levelBtn.innerText = level;
         levelBox.appendChild(levelBtn);
