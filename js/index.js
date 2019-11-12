@@ -99,7 +99,7 @@ function addLevelsBtn(levels) {
         levelBtn.id = level;
         levelBtn.className = "btn level-btn";
         level === levelName && levelBtn.classList.add('secondary-btn');
-        levelBtn.setAttribute('title', 'Zmień poziom trudności');
+        levelBtn.setAttribute('title', `Zmień poziom trudności na ${level}`);
         levelBtn.innerText = level;
         levelBox.appendChild(levelBtn);
         levelBtn.addEventListener('click', function() {
