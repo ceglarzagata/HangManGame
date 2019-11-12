@@ -130,6 +130,7 @@ function checkIfIsInWord(literaAlfabetu) {
                     wonsAmount++;
                     wonBox.innerHTML = `<strong>${wonsAmount}</strong> ${wonsAmount===1 ? 'raz' : 'razy'}`;
                     resultBox.style.display="block";
+                    resultIcon.classList.remove("mdi-emoticon-sad-outline");
                     resultIcon.classList.add("mdi-trophy");
                     resultInfo.innerText="Wygrałeś!";
                 }
@@ -142,6 +143,7 @@ function checkIfIsInWord(literaAlfabetu) {
             failsAmount++;
             failBox.innerHTML = `<strong>${failsAmount}</strong> ${failsAmount===1 ? 'raz' : 'razy'}`;
             resultBox.style.display="block";
+            resultIcon.classList.remove("mdi-trophy");
             resultIcon.classList.add("mdi-emoticon-sad-outline");
             resultInfo.innerText="Przegrałeś!";
         }
@@ -170,8 +172,7 @@ function genereteWord(words) {
 };
 
 wordGenerateBtn.addEventListener('click', function() {
-    const {words} = levels[levelName];
-    // hangManImg.src = `./images/${image}0.png`;
+    const {words, image} = levels[levelName];
     genereteWord(words);
 });
 
@@ -192,7 +193,8 @@ for(button of howToPlayBtns){
 };
 
 palyAgainBtn.addEventListener('click', function() {
-    const {words} = levels[levelName];
+    const {words, image} = levels[levelName];
+    hangManImg.src = `./images/${image}0.png`;
     genereteWord(words);
     resultBox.style.display="none";
 });
