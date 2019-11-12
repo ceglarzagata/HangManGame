@@ -83,6 +83,7 @@ let failsAmount = 0;
 let wonsAmount = 0;
 let levelName = 'easy';
 
+
 for (alphabetLetter of alphabetArray) {
     let letter = document.createElement('li');
     letter.innerText = alphabetLetter;
@@ -107,12 +108,14 @@ function addLevelsBtn(levels) {
             levelButtons.forEach((btn)=> btn.classList.remove('secondary-btn'));
             levelName = this.id;
             this.classList.add('secondary-btn');
+            hangManImg.src = `./images/${levels[levelName].image}0.png`;
             genereteWord(levels[levelName].words);
         });
     }
 };
 
 addLevelsBtn(levels);
+hangManImg.src = `./images/${levels[levelName].image}0.png`;
 generateDashesAmount(startWord);
 
 function checkIfIsInWord(literaAlfabetu) {
@@ -161,7 +164,6 @@ function genereteWord(words) {
     wordToGuess = [];
     wrongAnswersCounter = 0;
     lettersToGuess.innerHTML = null;
-    hangManImg.src = "";
     let randomWordIndex = Math.floor(Math.random() * (words.length));
     randomWord = words[randomWordIndex];
     generateDashesAmount(randomWord);
@@ -169,6 +171,7 @@ function genereteWord(words) {
 
 wordGenerateBtn.addEventListener('click', function() {
     const {words} = levels[levelName];
+    // hangManImg.src = `./images/${image}0.png`;
     genereteWord(words);
 });
 
