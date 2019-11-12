@@ -47,7 +47,7 @@ const levels = {
             'rozżalony',
             'transgraniczny'
         ],
-        image: 'drink',
+        image: 'apple',
         errorLimit: 4
     }
 }
@@ -82,7 +82,6 @@ let wrongAnswersCounter = 0;
 let failsAmount = 0;
 let wonsAmount = 0;
 let levelName = 'easy';
-const {words, image, errorLimit} = levels[levelName];
 
 for (alphabetLetter of alphabetArray) {
     let letter = document.createElement('li');
@@ -117,6 +116,8 @@ addLevelsBtn(levels);
 generateDashesAmount(startWord);
 
 function checkIfIsInWord(literaAlfabetu) {
+    const {image, errorLimit} = levels[levelName];
+
     if (randomWord.includes(literaAlfabetu)) {
         for (let i = 0; i <= randomWord.length; i++){
             if (randomWord[i] === literaAlfabetu){
@@ -167,10 +168,12 @@ function genereteWord(words) {
 };
 
 wordGenerateBtn.addEventListener('click', function() {
+    const {words} = levels[levelName];
     genereteWord(words);
 });
 
 for(button of startGameBtns){
+    const {words} = levels[levelName];
     button.addEventListener('click', function() {
         startGameBox.style.display='none';
         howToPlayBox.style.display='none'; 
@@ -186,6 +189,7 @@ for(button of howToPlayBtns){
 };
 
 palyAgainBtn.addEventListener('click', function() {
+    const {words} = levels[levelName];
     genereteWord(words);
     resultBox.style.display="none";
 });
