@@ -42,7 +42,7 @@ const levels = {
             'wędkarstwo',
             'anatomia',
             'dogoterapia',
-            'rzeczpospolita',
+            'kołowrotek',
             'ubezwłasnowolnienie',
             'rozżalony',
             'transgraniczny'
@@ -147,7 +147,7 @@ function checkIfIsInWord(literaAlfabetu) {
             resultBox.style.display="block";
             resultIcon.classList.remove("mdi-trophy");
             resultIcon.classList.add("mdi-emoticon-sad-outline");
-            resultInfo.innerText="Przegrałeś!";
+            resultInfo.innerText=`Przegrałeś! Poprawne słowo to: ${randomWord}`;
         }
     }
 };
