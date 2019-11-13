@@ -8,7 +8,7 @@ Technology used:
 <li>CSS</li>
 <li>JavaScript</li>
 <br>
-No support for IE.
+No support for IE.<br>
 Icons from: https://materialdesignicons.com/
 <br><br>
 See: https://ceglarzagata.github.io/HangManGame/
