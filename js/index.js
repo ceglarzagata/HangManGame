@@ -73,8 +73,8 @@
     const resultInfo = resultBox.querySelector('p');
     const resultIcon = resultBox.querySelector('i');
     const palyAgainBtn = document.getElementById('play-again-btn');
-    const wonBox = document.querySelector('#won-box span');
-    const failBox = document.querySelector('#fail-box span');
+    const wonBox = document.querySelector('#won-box p');
+    const failBox = document.querySelector('#fail-box p');
 
     const startWord = 'zaczynajmy';
     let randomWord = '';
@@ -84,6 +84,13 @@
     let wonsAmount = 0;
     let levelName = 'easy';
 
+    if (failsAmount === 0) {
+        failBox.innerText = "Jeszcze nie przegrałeś."
+    } 
+    
+    if ( wonsAmount === 0 ) {
+        wonBox.innerText = "Jeszcze nie wygrałeś."
+    }
 
     for (alphabetLetter of alphabetArray) {
         let letter = document.createElement('button');
@@ -102,7 +109,7 @@
             let levelBtn = document.createElement('button');
             levelBtn.id = level;
             levelBtn.className = "btn level-btn";
-            level === levelName && levelBtn.classList.add('secondary-btn');
+            level == levelName && levelBtn.classList.add('secondary-btn');
             levelBtn.setAttribute('title', `Zmień poziom trudności na ${level}`);
             levelBtn.innerText = level;
             levelBox.appendChild(levelBtn);
@@ -126,12 +133,12 @@
         const {image, errorLimit} = levels[levelName];
         if (randomWord.includes(literaAlfabetu)) {
             for (let i = 0; i <= randomWord.length; i++){
-                if (randomWord[i] === literaAlfabetu){
+                if (randomWord[i] ==  literaAlfabetu){
                     wordToGuess[i] = literaAlfabetu;
                     lettersToGuess.children[i].innerText = literaAlfabetu;
                     if(!wordToGuess.includes('_')) {
                         wonsAmount++;
-                        wonBox.innerHTML = `<strong>${wonsAmount}</strong> ${wonsAmount===1 ? 'raz' : 'razy'}`;
+                        wonBox.innerHTML = `Wygrałeś <strong>${wonsAmount}</strong> ${wonsAmount==1 ? 'raz' : 'razy'}.`;
                         resultBox.style.display="block";
                         resultIcon.classList.remove("mdi-emoticon-sad-outline");
                         resultIcon.classList.add("mdi-trophy");
@@ -142,9 +149,9 @@
         } else {
             wrongAnswersCounter++;
             hangManImg.src = `./images/${image}${wrongAnswersCounter}.png`;
-            if (wrongAnswersCounter === errorLimit) {
+            if (wrongAnswersCounter == errorLimit) {
                 failsAmount++;
-                failBox.innerHTML = `<strong>${failsAmount}</strong> ${failsAmount===1 ? 'raz' : 'razy'}`;
+                failBox.innerHTML = `Przegrałeś <strong>${failsAmount}</strong> ${failsAmount==1 ? 'raz' : 'razy'}.`;
                 resultBox.style.display="block";
                 resultIcon.classList.remove("mdi-trophy");
                 resultIcon.classList.add("mdi-emoticon-sad-outline");

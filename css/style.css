@@ -140,7 +140,7 @@ body {
     .level-title {
         margin-bottom: var(--vertical-gap);
         margin-right: 0;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -223,7 +223,7 @@ body {
 
 @media (min-width: 480px) {
     .score-box {
-        width: 370px;
+        width: 440px;
         margin: 0 auto;
     }
     .score-icon {
