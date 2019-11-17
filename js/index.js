@@ -75,6 +75,7 @@
     const palyAgainBtn = document.getElementById('play-again-btn');
     const wonBox = document.querySelector('#won-box p');
     const failBox = document.querySelector('#fail-box p');
+    const scoreSummary = document.getElementById('score-summary');
 
     const startWord = 'zaczynajmy';
     let randomWord = '';
@@ -157,6 +158,13 @@
                 resultIcon.classList.add("mdi-emoticon-sad-outline");
                 resultInfo.innerText=`Przegrałeś! Poprawne słowo to: ${randomWord}`;
             }
+        }
+        if (wonsAmount > failsAmount) {
+            scoreSummary.innerText = "Wygrałeś więcej razy niż przegrałeś."
+        } else if (wonsAmount < failsAmount) {
+            scoreSummary.innerText = "Przegrałeś więcej razy niż wygrałeś."
+        } else if (wonsAmount == failsAmount && wonsAmount!==0 && failsAmount !== 0) {
+            scoreSummary.innerText = "Wygrałeś tyle samo razy co przegrałeś."
         }
     };
 

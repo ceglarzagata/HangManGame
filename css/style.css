@@ -1,5 +1,6 @@
 :root {
     --main-color: sandybrown;
+    --secondary-color: #eaeaea;
     --disabled-color: #f5bc8c;
     --horizontal-gap: 20px;
     --vertical-gap: 10px;
@@ -198,10 +199,16 @@ body {
 
 .score-box {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--vertical-gap) 0;
+}
+
+.score-wrapper {
+    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: var(--vertical-gap) 0;
 }
 
 .won-box, .fail-box {
@@ -221,8 +228,16 @@ body {
     display: none;
 }
 
+.score-summary {
+    background: var(--secondary-color);
+    margin-top: var(--vertical-gap);
+    padding: var(--vertical-gap) var(--horizontal-gap);
+    width: 100%;
+    font-weight: bold;
+}
+
 @media (min-width: 480px) {
-    .score-box {
+    .score-wrapper {
         width: 440px;
         margin: 0 auto;
     }
@@ -232,6 +247,10 @@ body {
     }
     .won-box, .fail-box {
         flex-direction: row;
+    }
+    .score-summary {
+        padding: 10px;
+        font-size: 1.3rem;
     }
 }
 
